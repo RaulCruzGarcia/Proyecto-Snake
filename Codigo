@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+class Juego{
+public:
+
+
+
+
+class Serpiente{
+private:
+     int cuerpo;
+public:
+    Serpiente(int x, int y){
+        cuerpo.push_back(int x, int y);
+     }
+
+void mover(int X, int Y) {
+    cuerpo.push_front(x,y);
+    cuerpo.pop_back();#con esta linea de codigo se muestra el movimiento
+}
+
+
+
+class Comida{
+private:
