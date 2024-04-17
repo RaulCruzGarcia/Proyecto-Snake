@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <utility>
 using namespace std;
 
 class Juego{
@@ -9,15 +11,28 @@ public:
 
 class Serpiente{
 private:
-     int cuerpo;
+     vector<pair<int,int>> cuerpo; //se representa el cuerpo de la serpiente como coordenadas x,y
+     int longitud;//se representa la longitud de la serpiente
+     pair<int,int>direccion;//esta es la direccion en la que la serpiente se movera
 public:
+    //Constructor para la clase serpiente
     Serpiente(int x, int y){
-        cuerpo.push_back(int x, int y);
+        cuerpo.push_back(int x, int y);//aqui se muestra la posicion inicial de la serpiente
+        longitud = 1;//comienza con una longitud de 1
+        direccion = {0,1};
      }
 
-void mover(int X, int Y) {
-    cuerpo.push_front(x,y);
-    cuerpo.pop_back();#con esta linea de codigo se muestra el movimiento
+void mover(int X, int Y) {//muestra la nueva posicion de la serpiente basada en la posicion anterior
+    pair<int,int> cabeza={cuerpo.front().first + direccion.first, cuerpo.front().second + direccion.second};
+    cuerpo.insert(cuerpo.begin(),cabeza);//pone la serpiente en la nueva direccion
+    }
+}
+void crecer(){
+   longitud++; // se aumenta el largo de la serpiente 
+}
+
+void cambiar_direccion(int x, int y){
+    direccion = {x,y};//se establece la nueva dirección
 }
 
 
