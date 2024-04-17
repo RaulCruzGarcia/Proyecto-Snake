@@ -7,8 +7,6 @@ class Juego{
 public:
 
 
-
-
 class Serpiente{
 private:
      vector<pair<int,int>> cuerpo; //se representa el cuerpo de la serpiente como coordenadas x,y
@@ -45,3 +43,10 @@ void mostrarInfromacion()
      cout << "Tienes que comer manzanas para crecer" << manzana endl;
 }
 }
+class Menu : public juego
+{}
+class Iniciar : public Menu
+{}
+class Ajustes : public Menu
+{}
+class Nuevapartida : public Menu
