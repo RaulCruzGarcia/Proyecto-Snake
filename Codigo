@@ -35,7 +35,13 @@ void cambiar_direccion(int x, int y){
     direccion = {x,y};//se establece la nueva dirección
 }
 
-
-
 class Comida{
 private:
+     string alimento;
+//Constructor
+     Comida(string manzana) : alimento(manzana)
+void mostrarInfromacion()
+{
+     cout << "Tienes que comer manzanas para crecer" << manzana endl;
+}
+}
