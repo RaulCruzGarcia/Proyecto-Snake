@@ -33,10 +33,10 @@ public:// Constructor para darle una posicion de inicio a la serpiente.
 
         // se mueve la serpiente dependiendo la direccion en la que esta actualmente 
         switch (direccion) {
-            case 'U': cabeza.second--; break;
-            case 'D': cabeza.second++; break;
-            case 'L': cabeza.first--; break;
-            case 'R': cabeza.first++; break;
+            case 'W': cabeza.second--; break;
+            case 'S': cabeza.second++; break;
+            case 'A': cabeza.first--; break;
+            case 'D': cabeza.first++; break;
         }
 
         // Agregar la nueva cabeza al principio del cuerpo de la serpiente
