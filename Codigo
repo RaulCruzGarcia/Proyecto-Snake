@@ -7,32 +7,52 @@ class Juego{
 public:
 
 
-class Serpiente{
+class Serpiente {
 private:
-     vector<pair<int,int>> cuerpo; //se representa el cuerpo de la serpiente como coordenadas x,y
-     int longitud;//se representa la longitud de la serpiente
-     pair<int,int>direccion;//esta es la direccion en la que la serpiente se movera
-public:
-    //Constructor para la clase serpiente
-    Serpiente(int x, int y){
-        cuerpo.push_back(int x, int y);//aqui se muestra la posicion inicial de la serpiente
-        longitud = 1;//comienza con una longitud de 1
-        direccion = {0,1};
-     }
+    vector<pair<int, int>> cuerpo; // En este vector guardamos las posiciones (x, y) del cuerpo de la serpiente
+    int longitud; // Longitud que tiene la serpiente
+    char direccion; // Dirección actual de la serpiente ('W' = arriba, 'S' = abajo, 'A' = izquierda, 'D' = derecha)
 
-void mover(int X, int Y) {//muestra la nueva posicion de la serpiente basada en la posicion anterior
-    pair<int,int> cabeza={cuerpo.front().first + direccion.first, cuerpo.front().second + direccion.second};
-    cuerpo.insert(cuerpo.begin(),cabeza);//pone la serpiente en la nueva direccion
+public:// Constructor para darle una posicion de inicio a la serpiente.
+    Serpiente(int InicioX, int InicioY, char dirInicial)
+        : longitud(1), direccion(dirInicial) {
+        cuerpo.push_back((InicioX, InicioY));
     }
-}
-void crecer(){
-   longitud++; // se aumenta el largo de la serpiente 
-}
+//Método para obtener la longitud actual de la serpiente.
+    int obtenerLongitud() const {
+        return longitud;
+    }
+//con este metodo cambiamos la direccion de la serpiente
+    void cambiarDireccion(char nuevaDireccion) {
+        direccion = nuevaDireccion;
+    }
+//con este metodo ejecutamos la nueva direccion de la serpiente que ocurre en el anterior
+    void mover() {
+        //Esta es la posicion de donde apunta la cabeza de la serpiente
+        cabeza = cuerpo.front();
 
-void cambiar_direccion(int x, int y){
-    direccion = {x,y};//se establece la nueva dirección
-}
+        // se mueve la serpiente dependiendo la direccion en la que esta actualmente 
+        switch (direccion) {
+            case 'U': cabeza.second--; break;
+            case 'D': cabeza.second++; break;
+            case 'L': cabeza.first--; break;
+            case 'R': cabeza.first++; break;
+        }
 
+        // Agregar la nueva cabeza al principio del cuerpo de la serpiente
+        cuerpo.insert(cuerpo.begin(), cabeza);
+
+        // Si la serpiente no ha comido, eliminar la última posición para mantener la longitud
+        if (cuerpo.size() > longitud) {
+            cuerpo.pop_back();
+        }
+    }
+// con este Método representamos que la serpiente ha comido y crece su tamaño
+
+    void crecer() {
+        longitud++;
+    }
+};
 class Comida{
 private:
      string alimento;
